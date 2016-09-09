@@ -1,0 +1,1 @@
+document.write("<pre id=O></pre>"+"789+C\n456-\n123*\n0.=/".replace(/./g,"<button onclick=C('$&')>$&</button>").replace(/\n/g,"<br>"));function U(){z=a=""+eval(a+o+(b||a))}function C(c){c=="C"?(a=z="0",b=o="",e=2):1+c-0?(z=e?b=c:b+=c,e-2?0:o=a="",e=0):c=="="?(o?U(e-1?0:b=a):e?0:a=b,e=2):(e?e-1?b=a:0:o?U():a=b,o=c,e=1);O.innerHTML=z}C('C')
