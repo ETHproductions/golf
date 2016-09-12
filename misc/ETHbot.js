@@ -159,23 +159,30 @@ function f(){
 	// Generate a random sentence
 	else {
 		var firsts = [], nexts = {};
-		[].forEach.call(document.getElementsByClassName("message"),function(x){
-			var text=x.querySelector(".content");
-			if(!text)return;
-			text=text.textContent;
+		[].forEach.call(document.getElementsByClassName("message"), function (x) {
+			var text = x.querySelector(".content");
+			if (!text) return;
+			text = text.textContent;
 			var y = text;
-			y=y.replace(/https?\:\S+/g,"");
-			y=y.replace(/\,/g," punc-comma");
-			y=y.replace(/\?/g," punc-question");
-			y=y.replace(/\!/g," punc-exclamation");
-			y=y.replace(/\:/g," punc-colon");
-			y=y.replace(/\;/g," punc-semicolon");
-			y=y.replace(/\./g," punc-period");
-			y=y.replace(/<ETHbot>/gi,"");
-			y=y.replace(/^[@/<]\S+/g,"");
-			y=y.split(" ").map(function(a,b){return b?a:a[0]&&a.toLowerCase()==a[0].toLowerCase+a.slice(1)?a.toLowerCase():a}).join(" ");
-			var words = y.split(" ").filter(function(x){return x.length>0});
-			if(words.length<2) return;
+			y = y.replace(/https?\:\S+/g,"")
+			    .replace(/\,/g," punc-comma")
+			    .replace(/\?/g," punc-question")
+			    .replace(/\!/g," punc-exclamation")
+			    .replace(/\:/g," punc-colon")
+			    .replace(/\;/g," punc-semicolon")
+			    .replace(/\./g," punc-period")
+			    .replace(/<ETHbot>/gi,"")
+			    .replace(/^[@/<]\S+/g,"");
+			y = y.split(" ")
+			    .map(function (w, i) {
+			    	if (i === 0 && w.length > 0 && w.slice(1) === w.slice(1).toLowerCase()) {
+			    		return w.toLowerCase();
+			    	} else {
+			    		return w;
+			    	}
+			    }).join(" ");
+			var words = y.split(" ").filter(function (x) { return x.length > 0; });
+			if(words.length < 2) return;
 			firsts.push(words[0]);
 			for(var i in words) {
 				if(!nexts[words[i]]) nexts[words[i]] = [];
