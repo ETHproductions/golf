@@ -6,4 +6,4 @@ f=(s,i=0)=>s[i+2]?(b=s[i++]<s[i]^s[i]<s[i+1])?f(s,i):b:1        // (56) Rearrang
 f=(s,i=0)=>s[i+2]?(b=s[i++]<s[i]^s[i]<s[i+1])&&f(s,i):1         // (55) Rearrange conditional expression
 f=(s,i=0)=>s[i+2]?(s[i++]<s[i]^s[i]<s[i+1])&&f(s,i):1           // (53) `b` is now also a waste of bytes
 f=(s,i=0)=>s[i+2]?s[i++]<s[i]^s[i]<s[i+1]&&f(s,i):1             // (51) Remove unnecessary parentheses
-f=(s,i=0,a=s[i+2])=>a?s[i++]<s[i]^s[i]<a&&f(s,i):1              // (50) Assign a to s[i+2] to save a byte
+f=s=>s[2]?s[0]<s[1]^s[1]<s[2]&&f(s.slice(1)):1                  // (46) Use `s.slice(1)` instead of `i`
