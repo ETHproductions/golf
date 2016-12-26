@@ -328,8 +328,8 @@ function f() {
             .replace(/(^| )punc-semicolon/gi, ";");
         if (!y[0]) y = "sentence generation failed."
         y = y[0].toUpperCase() + y.slice(1);
-        y = y.replace(/ i /g, " I ");
-        .replace(/ i'/g, " I'");
+        y = y.replace(/ i /g, " I ")
+             .replace(/ i'/g, " I'");
         setTimeout(function(x) {
             post(":" + message_id + " " + x)
         }, 3000, y);
