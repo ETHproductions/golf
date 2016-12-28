@@ -105,6 +105,7 @@ function f() {
         var text = "",
             result = 0;
         a = denumber(a);
+        a = a.replace(/@\S+/g, "");
         if (a.match(/what|who|how much/i)) {
             a.replace(/(?:what|who|how much) is ([^?]+)/i, function(_, x) {
                 result = x
@@ -188,12 +189,13 @@ function f() {
                     return strings[+y]
                 });
                 var evaled = 0;
-                try {
+                if (/[A-Za-z$_]/.test(result.replace(/(['"`])(\\.|(?!\1).)+\1/g, ""))) failed = "Code may be unsafe, not evaluating";
+                else try {
                     evaled = eval(result)
                 } catch (e) {
                     evaled = "" + e
                 }
-                if (failed) text = "I don't know what \"" + result + "\" means";
+                if (failed) text = failed;
                 else text = original[0].toUpperCase() + original.slice(1) + " is " + stringify(evaled);
             }
             text += ".";
@@ -218,18 +220,16 @@ function f() {
                 y = y.replace(/"(\d+)"/g, function(_, z) {
                     return strings[+z]
                 });
-                if (failed) missed.push([x, y]);
+                if (failed) {
+					knowledge[result] = y;
+                    learned.push([x, knowledge[result]]);
+				}
                 else try {
                     knowledge[result] = eval(y);
                     learned.push([x, knowledge[result]]);
                 } catch (e) {
-                    try {
-                        if (!knowledge[y.toLowerCase()]) throw ("ERROR");
-                        knowledge[result] = knowledge[y.toLowerCase()];
-                        learned.push([x, knowledge[result]]);
-                    } catch (e) {
-                        missed.push([x, y]);
-                    }
+                    knowledge[result] = y;
+                    learned.push([x, knowledge[result]]);
                 }
             });
 
@@ -284,7 +284,8 @@ function f() {
                 .replace(/\;/g, " punc-semicolon")
                 .replace(/\./g, " punc-period")
                 .replace(/<ETHbot>/gi, "")
-                .replace(/^[@/<]\S+/g, "");
+                .replace(/^[@/<]\S+/g, "")
+                .replace(/@/g, "");
             y = y.split(" ")
                 .map(function(w, i) {
                     if (i === 0 && w.length > 0 && w.slice(1) === w.slice(1).toLowerCase()) {
