@@ -1,5 +1,5 @@
-function post(x) {
-    document.getElementById('input').value = x;
+function post(x, id) {
+    document.getElementById('input').value = (id ? ":" + id + " ": "") + x;
     document.getElementById("sayit-button").click()
 }
 var last_message = "";
@@ -119,7 +119,7 @@ function f() {
                 result = x
             });
             if (!result) {
-                post("Error processing question.");
+                post("Error processing question.", message_id);
                 return;
             }
             result = result.toLowerCase().replace(/your/g, "my");
@@ -163,7 +163,7 @@ function f() {
                 }
                 var total = curr[0];
                 for (i = all.length; i--;) total += all[i][all[i].length - 1];
-                text = "@" + username + " " + (
+                text = (
                     curr.length == 1 ? "My calculations are inconclusive, but it may be " + total :
                     curr.length == 2 ? "It's a little hard to tell, but I believe it is " + total :
                     curr.length == 3 ? "The sequence is a little vague, but it's probably " + total :
@@ -245,11 +245,11 @@ function f() {
                 text += "I didn't understand these words: " + missed.map(mappy).join(", ");
             }
         }
-        post(text);
+        post(text, message_id);
     }
     
     else if (/what do you know/i.test(a)) {
-        post("I know " + Object.keys(knowledge).join(", ") + ", plus basic math and arithmetic sequences.");
+        post("I know " + Object.keys(knowledge).join(", ") + ", plus basic math and arithmetic sequences.", message_id);
     }
 
     // Handle definitions, such as "Pi is 3.14159265."
@@ -268,7 +268,7 @@ function f() {
         });
         post("Learned these words: " + words.map(function(x) {
             return x[0] + " (" + x[1] + ")"
-        }).join(", "));
+        }).join(", "), message_id);
     }
 
     // Generate a random sentence
@@ -336,9 +336,11 @@ function f() {
         y = y.replace(/ i /g, " I ")
              .replace(/ i'/g, " I'");
         setTimeout(function(x) {
-            post(":" + message_id + " " + x)
+            post(x, message_id)
         }, 3000, y);
     }
 }
+
+post("ETHbot started.");
 
 setInterval(f, 500);
