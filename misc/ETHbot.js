@@ -97,7 +97,6 @@ function f() {
     console.log(a);
     if (/@(?!ETH)/i.test(a)) return;
     if (username == "ETHbot") return;
-    if (/\<ETHbot\>/i.test(a)) return alert(a);
     if (a.match(/http/) && !a.match(/ETH/i)) return;
 
     // Handle questions such as "What is your name?" "What is five times seven?" "Who is George Washington?"
@@ -189,7 +188,8 @@ function f() {
                     return strings[+y]
                 });
                 var evaled = 0;
-                if (/[A-Za-z$_]/.test(result.replace(/(['"`])(\\.|(?!\1).)+\1/g, ""))) failed = "Code may be unsafe, not evaluating";
+                if (/[A-Za-z$_]/.test(result.replace(/(['"`])(\\.|(?!\1).)+\1/g, "")))
+                    failed = "I don't know what " + stringify(result) + " means";
                 else try {
                     evaled = eval(result)
                 } catch (e) {
@@ -246,6 +246,10 @@ function f() {
             }
         }
         post(text);
+    }
+    
+    else if (/what do you know/i.test(a)) {
+        post("I know " + Object.keys(knowledge).join(", ") + ", plus basic math and arithmetic sequences.");
     }
 
     // Handle definitions, such as "Pi is 3.14159265."
