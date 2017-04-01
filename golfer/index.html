@@ -73,11 +73,11 @@ function tokenize(code) {
       addToken("literal");
       expression = true;
     }
-    else if (strip(/\d+\.?\d*/)) {
+    else if (strip(/\d+\.?\d*(?:e[+-]?\d+)?/i)) {
       addToken("literal");
       expression = true;
     }
-    else if (strip(/\.\d+/)) {
+    else if (strip(/\.\d+(?:e[+-]?\d+)?/)) {
       addToken("literal");
       expression = true;
     }
