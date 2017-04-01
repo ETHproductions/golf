@@ -14,8 +14,8 @@ function run() {
   }
   
   output.textContent = tokens.map(t => `{
-  type: "${t.type}",
-  value: "${t.value}",
+  type: ${JSON.stringify(t.type)},
+  value: ${JSON.stringify(t.value)},
   start: ${t.start},
   end: ${t.end}
 }`).join(",\n");
