@@ -83,7 +83,7 @@ function tokenize(code) {
     }
 
     // String literals
-    else if (strip(/(["'])(?:(?!\1)(?:\\[^]|[^\\]))+\1/)) {
+    else if (strip(/(["'])(?:(?!\1)(?:\\[^]|[^\\]))*\1/)) {
       addToken("literal");
       expression = true;
     }
