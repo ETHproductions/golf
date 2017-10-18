@@ -1,1 +1,1 @@
-$=_=>document.getElementById(_);for(i=p=12;--i;)document.write(i%4?`<button id=${i*3>>2} onclick=${T="innerText"}=(t=${T})<'_'?t:'XO'[p++%2];[0,12,24,2,6,10,3,9].some(a=&gt(b=a%4+1,c=$(a=a/4|0)[T])!='_'&c==$(a+b)[T]&c==$(a+b+b)[T])&&eval("for(x=9;x--;)$(x)[T]=c")>_</button>`:"<br>")
+$=_=>document.getElementById(_);for(i=p=12;--i;)document.write(i%4?`<button id=${i*3>>2} onclick=${T="innerText"}<'_'?0:${T}='XO'[p++%2];[0,12,24,2,6,10,3,9].some(a=&gt(b=a%4+1,c=$(a=a/4|0)[T])!='_'&c==$(a+b)[T]&c==$(a+b+b)[T])&&eval("for(x=9;x--;)$(x)[T]=c")>_</button>`:"<br>")
