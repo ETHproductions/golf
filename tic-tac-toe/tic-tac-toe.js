@@ -1,0 +1,1 @@
+$=_=>document.getElementById(_);for(i=p=12;--i;)document.write(i%4?`<button id=${i*3>>2} onclick=this[T="innerText"]=(t=this[T])<'_'?t:'XO'[p++%2];"2151816373838462".match(/../g).some(([a,b])=&gt(c=$(a)[T])!='_'&c==$(a-b)[T]&c==$(a-b-b)[T])&&[..."012345678"].map(x=&gt$(x)[T]=c)>_</button>`:"<br>")
