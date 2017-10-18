@@ -1,1 +1,1 @@
-for(A=[],i=p=12;--i;d.write(i%4?`<button onclick=${T="innerText"}<'_'?0:${T}=A[${i*3>>2}]='XO'[p++%2];[0,12,24,2,6,10,3,9].some(a=&gt(b=a%4+1,c=A[a=a/4|0])&&c==A[a+b]&c==A[a+b+b])&&[...d.getElementsByTagName('button')].map($=&gt$[T]=c)>_</button>`:"<br>"))d=document
+for(i=p=12;--i;d.write(i%4?`<button onclick=${T="innerText"}<'_'?0:${T}=d[${i*3>>2}]='XO'[p++%2];[0,12,24,2,6,10,3,9].some(a=&gt(b=a%4+1,c=d[a=a/4|0])&&c==d[a+b]&c==d[a+b+b])&&[...d.getElementsByTagName('button')].map($=&gt$[T]=c)>_</button>`:"<br>"))d=document
