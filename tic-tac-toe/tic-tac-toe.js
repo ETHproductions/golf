@@ -1,1 +1,1 @@
-$=_=>d.getElementById(_);for(i=p=12;--i;d.write(i%4?`<button id=${i*3>>2} onclick=${T="innerText"}<'_'?0:${T}='XO'[p++%2];[0,12,24,2,6,10,3,9].some(a=&gt(b=a%4+1,c=$(a=a/4|0)[T])!='_'&c==$(a+b)[T]&c==$(a+b+b)[T])&&eval("for(x=9;x--;)$(x)[T]=c")>_</button>`:"<br>"))d=document
+for(A=[],i=p=12;--i;d.write(i%4?`<button onclick=${T="innerText"}<'_'?0:${T}=A[${i*3>>2}]='XO'[p++%2];[0,12,24,2,6,10,3,9].some(a=&gt(b=a%4+1,c=A[a=a/4|0])&&c==A[a+b]&c==A[a+b+b])&&[...d.getElementsByTagName('button')].map($=&gt$[T]=c)>_</button>`:"<br>"))d=document
