@@ -1,0 +1,1 @@
+for(i=12;--i;d.write(i%4?`<input type=button style=width:30 onclick="value=d[${i*3>>2}]=value||'XO'[i++%2];for(a of[0,12,24,2,6,10,3,9])for(q of(b=a%4+1,c=d[a>>=2])&&c==d[a+=b]&c==d[a+b]?d.body.children:[])q.value=c">`:"<br>"))d=document

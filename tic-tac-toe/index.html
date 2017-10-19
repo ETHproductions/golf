@@ -1,1 +1,111 @@
-<script src="tic-tac-toe.js"></script>
+<meta charset=utf-8>
+<center style=font-family:arial>
+<a href=//github.com/ETHproductions/golf><img style="position:absolute;top:0;right:0;border:0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<br>
+<h1>tic-tac-tiny</h1>
+<h3>A <span class=minimal-bytes>???</span>b/<span class=full-bytes>???</span>b tic-tac-toe app in JS</h3>
+<br>
+Golfed by <a href=//ethproductions.github.io>ETHproductions</a>, <a href=//xem.github.io>xem</a>, _nderscore, magna
+<br>
+<hr>
+<h2>Full (<span class=full-bytes>???</span>b)</h2>
+<br>
+<b>Source code:</b>
+<br>
+(<a href="https://github.com/xem/sheet/blob/gh-pages/full-commented.html">commented source code</a>)
+<br>
+<br>
+<pre id=full style=text-align:left;font-family:courier;width:650px;margin:auto;background:#def;padding:15px;border-radius:10px>
+Loading...
+</pre>
+<br>
+
+<b>Demo:</b>
+<button onclick=document.getElementById("full-demo").src+="">Reload</button>
+<br>
+<br>
+Take turns clicking on a spot to claim it!
+<br>
+<br>
+<iframe id=full-demo style=transform:translateX(100px) src=full.html frameborder=0 width=310 height=100></iframe>
+
+<br>
+<br>
+<hr>
+<br>
+
+
+<h2>Minimal (<span class=minimal-bytes>???</span>b)</h2>
+<br>
+<b>Source code:</b>
+<br>
+(<a href="https://github.com/ETHproductions/golf/blob/gh-pages/tic-tac-toe/mini-commented.html">commented source code</a>)
+<br>
+<br>
+<pre id=minimal style=text-align:left;font-family:courier;width:650px;margin:auto;background:#def;padding:15px;border-radius:10px>
+Loading...
+</pre>
+<br>
+<b>Demo:</b>
+<button onclick=document.getElementById("minimal-demo").src+="">Reload</button>
+<br>
+<br>
+Take turns clicking on a spot to claim it!
+<br>
+<br>
+<iframe id=minimal-demo style=transform:translateX(50px) src=minimal.html frameborder=0 width=150 height=150></iframe>
+
+
+
+<br>
+<br>
+© 2017 <a href=//register.jsgolf.club>The Codegolf Team</a>
+<br>
+<br>
+<script>
+function getCode(id) {
+  var xhr = new XMLHttpRequest();
+  
+  xhr.addEventListener("load", function () {
+    applyText(id, this.response);
+  });
+  
+  xhr.addEventListener("error", function () {
+    applyText(id, this.response);
+  });
+  
+  xhr.open("GET", id + ".js");
+  xhr.send();
+}
+
+function applyText(id, text) {
+  var elem = document.getElementById(id);
+  if (typeof text !== 'string') {
+    elem.innerText = "Error loading code.";
+    return;
+  }
+  
+  for (var span of document.getElementsByClassName(id + "-bytes")) {
+    span.innerText = text.length;
+  }
+  
+  var style = getComputedStyle(elem, null);
+  var elemWidth = +style.getPropertyValue('width').match(/\d+/);
+  var textWidth = getTextWidth('a', style);
+  elem.innerText = text.match(eval("/.{1," + Math.floor(elemWidth / textWidth) + "}\\b/g")).join("\n");
+}
+
+function getTextWidth(txt, computedStyle) {
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  ctx.font = computedStyle.getPropertyValue('font-size') + ' ' + computedStyle.getPropertyValue('font-family');
+  return ctx.measureText(txt).width;
+}
+
+getCode("minimal");
+getCode("full");
+</script>
+<style>
+a { color: #000; }
+hr { width: 500px }
+</style>
