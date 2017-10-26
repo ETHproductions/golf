@@ -45,13 +45,13 @@ for(i = 12; --i;
             
             // So we have our three cells, which each can be one of 1, 2, or undefined.
             // Taking the bitwise AND of all three gives 1 if all are 1, 2 if all are 2,
-            // or undefined otherwise.
+            // or 0 otherwise.
             
             // Take the starting cell
             d[a]
-            // Add the increment (a and b were still strings) and perform bitwise AND
+            // Add the increment (a and b were still strings) and perform bitwise AND with that cell
             & d[a -= -b]
-            // Add the increment again and perform another bitwise AND
+            // Add the increment again and perform another bitwise AND with the last cell
             & d[+b + a]
             
             // Finally, if this is still non-zero, replace the entire document with the winner
