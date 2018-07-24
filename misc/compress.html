@@ -1,4 +1,4 @@
-<textarea id=I></textarea><br>
+<textarea id=I cols=50></textarea><br>
 <button onclick="
   if (/[^\x00-\xFF]/.test(I.value))
     alert('Only chars U+0000-U+00FF allowed');
@@ -12,5 +12,5 @@
     B.innerText = O.value.length + ' bytes (' + (I.value.length - O.value.length) + ' saved)';
   }
 ">Compress</button><br>
-<textarea id=O></textarea><br>
+<textarea id=O cols=50></textarea><br>
 <p id=B></p>
