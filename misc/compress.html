@@ -1,4 +1,16 @@
 <textarea id=I></textarea><br>
-<button onclick="/[^\x00-\xFF]/.test(I.value)?alert('Only chars U+0000-U+00FF allowed'):B.innerText=(O.value=unescape(I.value.replace(/[^]/g,x=>'%'+(0+x.charCodeAt().toString(16)).slice(-2)).replace(/%(..)%/g,'%u$1'))).length+' bytes ('+(I.value.length-O.value.length)+' saved)'">Compress</button><br>
+<button onclick="
+  if (/[^\x00-\xFF]/.test(I.value))
+    alert('Only chars U+0000-U+00FF allowed');
+  else {
+    O.value='eval(unescape(escape`' +
+      unescape(I.value
+                .replace(/[^]/g, x => '%' + (0+x.charCodeAt().toString(16)).slice(-2))
+                .replace(/%(..)%/g,'%u$1')
+              )
+      + '`.replace(/u(..)/g,&#39;$1%&#39;)))';
+    B.innerText = O.value.length + ' bytes (' + (I.value.length - O.value.length) + ' saved)';
+  }
+">Compress</button><br>
 <textarea id=O></textarea><br>
 <p id=B></p>
