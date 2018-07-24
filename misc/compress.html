@@ -1,16 +1,17 @@
-<textarea id=I cols=50></textarea><br>
+<textarea id=I cols=80 rows=7></textarea><br>
 <button onclick="
   if (/[^\x00-\xFF]/.test(I.value))
     alert('Only chars U+0000-U+00FF allowed');
   else {
+    let code = I.value;
+    if (code.length % 2 > 0) code += ' ';
     O.value='eval(unescape(escape`' +
-      unescape(I.value
-                .replace(/[^]/g, x => '%' + (0+x.charCodeAt().toString(16)).slice(-2))
-                .replace(/%(..)%/g,'%u$1')
+      unescape(code.replace(/[^]/g, x => '%' + (0+x.charCodeAt().toString(16)).slice(-2))
+                   .replace(/%(..)%/g,'%u$1')
               )
       + '`.replace(/u(..)/g,&quot;$1%&quot;)))';
     B.innerText = O.value.length + ' bytes (' + (I.value.length - O.value.length) + ' saved)';
   }
 ">Compress</button><br>
-<textarea id=O cols=50></textarea><br>
+<textarea id=O cols=80 rows=4></textarea><br>
 <p id=B></p>
