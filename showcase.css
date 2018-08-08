@@ -1,0 +1,39 @@
+body {
+  text-align: center;
+  font-family: "Arial";
+}
+
+a {
+  color: #000;
+}
+
+hr {
+  width: 500px;
+}
+
+h4 {
+  margin-bottom: -10px;
+}
+
+pre {
+  text-align: left;
+  font-family: "Courier New", "Courier", monospace;
+  width: 650px;
+  margin: auto;
+  background: #def;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+iframe {
+  border: 1px solid #aaa;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+#gh-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}

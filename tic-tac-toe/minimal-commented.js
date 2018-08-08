@@ -37,11 +37,13 @@ for(i = 12; --i;
         // In fact, if we loop through all of these increments and all of these indices,
         //  the 12 possibilities that we don't want all contain 4, 8, or an index greater than 11,
         //  and therefore can't ever be winning scenarios. (You can check this yourself if you'd like)
+        // It doesn't even matter if we start on indices 4, 6, 7, and so on because these will always
+        //  contain an index outside of the 9 on the board.
         
         // So, we loop through all increments:
         for (b of '1345')
           // And through all starting indices:
-          for (a of '12359')
+          for (a = 12; --a; )
             
             // So we have our three cells, which each can be one of 1, 2, or undefined.
             // Taking the bitwise AND of all three gives 1 if all are 1, 2 if all are 2,
@@ -49,10 +51,10 @@ for(i = 12; --i;
             
             // Take the starting cell
             d[a]
-            // Add the increment (a and b were still strings) and perform bitwise AND with that cell
-            & d[a -= -b]
-            // Add the increment again and perform another bitwise AND with the last cell
+            // Add the increment (b is a string, mind you) and perform bitwise AND with that cell
             & d[+b + a]
+            // Add twice the increment and perform another bitwise AND with the last cell
+            & d[b*2 + a]
             
             // Finally, if this is still non-zero, replace the entire document with the winner
             && d.write(d[a])
@@ -63,6 +65,6 @@ for(i = 12; --i;
         `<p>`
     )
   )
-  // We only technically use the document object once, but using a separate array to keep track of
-  // the cell values takes a few more bytes
-  d=document
+  // We only technically use the document object once (for document.write), but using a separate array
+  // to keep track of the cell values takes a few more bytes
+  d = document

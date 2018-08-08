@@ -1,1 +1,1 @@
-for(i=12;--i;d.write(i%4?`<a onclick="innerText=d[${i}]=d[${i}]||i++%2+1;for(b of'1345')for(a of'12359')d[a]&d[a-=-b]&d[+b+a]&&d.write(d[a])">_</a> `:`<p>`))d=document
+for(i=12;--i;d.write(i%4?`<a onclick="innerText=d[${i}]=d[${i}]||i++%2+1;for(b of'1345')for(a=12;--a;)d[a]&d[+b+a]&d[2*b+a]&&d.write(d[a])">_</a> `:`<p>`))d=document
